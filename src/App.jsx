@@ -4,6 +4,7 @@ import FilterBar from './components/FilterBar'
 import ContentGrid from './components/ContentGrid'
 import DaoDoiSection from './components/DaoDoiSection'
 import CongDucSection from './components/CongDucSection'
+import MinhSuLaAiSection from './components/MinhSuLaAiSection'
 import Footer from './components/Footer'
 import data from './data/tri_hue.json'
 
@@ -33,6 +34,9 @@ export default function App() {
 
       {/* ── Module 3: Công Đức & Phước Báu ── */}
       <CongDucSection />
+
+      {/* ── Module 4: Minh Sư Là Ai? ── */}
+      <MinhSuLaAiSection />
 
       <Footer />
     </>
