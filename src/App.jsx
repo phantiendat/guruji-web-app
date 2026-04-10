@@ -7,7 +7,7 @@ import CongDucSection from './components/CongDucSection'
 import MinhSuLaAiSection from './components/MinhSuLaAiSection'
 import ThienCoDaiSection from './components/ThienCoDaiSection'
 import Footer from './components/Footer'
-import FloatingNav from './components/FloatingNav'
+import NavigationOverlay from './components/NavigationOverlay'
 import data from './data/tri_hue.json'
 
 export default function App() {
@@ -55,8 +55,8 @@ export default function App() {
 
       <Footer />
 
-      {/* ── Floating Pill Nav ── */}
-      <FloatingNav />
+      {/* ── Zen Controller + Full-screen Overlay Navigation ── */}
+      <NavigationOverlay />
     </>
   )
 }
