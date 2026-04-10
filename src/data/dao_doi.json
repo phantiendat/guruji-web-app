@@ -1,0 +1,100 @@
+{
+  "meta": {
+    "title": "Đạo & Đời",
+    "subtitle": "Cân bằng Tu học và Làm việc",
+    "description": "Giáo lý Minh sư Ruma về sự hòa điệu giữa chốn trần thế và con đường tâm linh."
+  },
+  "pairs": [
+    {
+      "id": "dd-01",
+      "doi": {
+        "label": "Trần Thế",
+        "content": "Con người dùng đầu óc để lý luận, tìm kiếm giải pháp và đổ lỗi cho thế giới bên ngoài — khiến linh hồn mãi chìm đắm trong luân hồi đau khổ.",
+        "icon": "⚡"
+      },
+      "dao": {
+        "label": "Tâm Linh",
+        "content": "Khi biết dùng Trí huệ để quan sát, con người sẽ không nhìn sự việc qua cái vỏ bề ngoài, mà thấu hiểu chân tướng bên trong một cách nhẹ nhàng — từ đó né tránh được mọi phiền não của thế giới trần tục.",
+        "icon": "🌅"
+      }
+    },
+    {
+      "id": "dd-02",
+      "doi": {
+        "label": "Trần Thế",
+        "content": "Đầu óc phàm phu chỉ nhỏ bé như một ly nước. Con người tranh đấu hơn thua, lý luận không ngừng, và càng lý luận càng thấy mình đúng — đó là cái bẫy của ngã chấp.",
+        "icon": "⚡"
+      },
+      "dao": {
+        "label": "Tâm Linh",
+        "content": "Trí huệ của loài người vô bờ vô bến, bao la như đại dương. Đó là kho tàng vĩ đại đã có sẵn ở tận sâu thẳm bên trong mỗi con người — chờ được đánh thức.",
+        "icon": "🌅"
+      }
+    },
+    {
+      "id": "dd-03",
+      "doi": {
+        "label": "Trần Thế",
+        "content": "Nhiều người lầm tưởng nhẫn nhịn là nhu nhược — họ phản kháng, tranh đấu, đấu khẩu, vì sợ rằng im lặng là thua cuộc.",
+        "icon": "⚡"
+      },
+      "dao": {
+        "label": "Tâm Linh",
+        "content": "Minh sư khẳng định sự nhẫn nại, không phản kháng hay tranh đấu hơn thua chính là Trí huệ. Triết lý \"Một câu nhịn chín câu lành\" giúp dập tắt chiến tranh, hóa giải hận thù và bảo vệ sự thanh tịnh cho chính mình.",
+        "icon": "🌅"
+      }
+    },
+    {
+      "id": "dd-04",
+      "doi": {
+        "label": "Trần Thế",
+        "content": "Khi nhắm mắt xuôi tay, con người phải bỏ lại tất cả tài sản, danh vọng, người thân — và chỉ mang theo duy nhất \"cái tội và cái phước\" mà mình đã tạo ra.",
+        "icon": "⚡"
+      },
+      "dao": {
+        "label": "Tâm Linh",
+        "content": "Sự buông xả lúc sinh tiền chính là chìa khóa. Điểm đến của linh hồn phụ thuộc hoàn toàn vào đức tin, sự tu hành và sự buông xả — không phải tài sản, địa vị hay học vị.",
+        "icon": "🌅"
+      }
+    },
+    {
+      "id": "dd-05",
+      "doi": {
+        "label": "Trần Thế",
+        "content": "Sự quyến luyến — tài sản, con cái, nhục thể, danh vọng — là sợi dây trói buộc khiến linh hồn không thể siêu thoát. Nhiều linh hồn cứ quanh quẩn nơi mồ mả do không nỡ rời xa người thân.",
+        "icon": "⚡"
+      },
+      "dao": {
+        "label": "Tâm Linh",
+        "content": "Chỉ đến khi vị sư chịu buông chiếc bát xuống, ông mới nhìn thấy chân tướng điêu tàn của vạn vật — và linh hồn mới được giải phóng. Buông xả không phải là mất đi, mà là trở về.",
+        "icon": "🌅"
+      }
+    },
+    {
+      "id": "dd-06",
+      "doi": {
+        "label": "Trần Thế",
+        "content": "Trí huệ của con người đời đời kiếp kiếp đã bị bức màn vô minh, ngã chấp, sự ích kỷ và dục vọng của thế giới Ma vương che phủ.",
+        "icon": "⚡"
+      },
+      "dao": {
+        "label": "Tâm Linh",
+        "content": "Củi hay đá dù có lửa bên trong nhưng không thể tự bốc cháy nếu không có sự cọ xát. Tương tự, linh hồn con người cần một bậc Minh sư truyền tâm ấn để đánh thức vị Phật và Trí huệ đang ngủ quên bên trong.",
+        "icon": "🌅"
+      }
+    },
+    {
+      "id": "dd-07",
+      "doi": {
+        "label": "Trần Thế",
+        "content": "Kiếp sống vô thường — không ai chắc được ngày mai mình còn hiện diện. Thế nhưng phần lớn chúng sinh vẫn chạy đua không ngừng, tích lũy không ngừng, lo âu không ngừng.",
+        "icon": "⚡"
+      },
+      "dao": {
+        "label": "Tâm Linh",
+        "content": "Việc ngồi xuống thả lỏng, tập trung vào mắt Trí Huệ và lắng nghe dòng âm lưu Thượng đế sẽ tạo ra chấn động lực thiêng liêng — đốt sạch mọi tạp niệm, nghiệp chướng, sự sợ hãi và sân hận.",
+        "icon": "🌅"
+      }
+    }
+  ]
+}

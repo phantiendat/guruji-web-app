@@ -265,4 +265,203 @@
   .content-grid { grid-template-columns: 1fr; }
   .filter-bar  { gap: 0.35rem; }
   .filter-btn  { font-size: 0.8rem; padding: 0.45rem 1rem; }
+
+  /* Dao Doi mobile: stack vertically */
+  .pair-row        { flex-direction: column; gap: 0; }
+  .pair-divider    { flex-direction: row; padding: 1rem 0; }
+  .divider-line    { flex: 1; height: 1px; width: auto; }
+  .daodoi-col-labels { display: none; }
+  .col-badge       { display: inline-block; margin-bottom: 0.5rem; }
+}
+
+/* ============================================================
+   MODULE 2: ĐẠO & ĐỜI
+   Palette: Jade (#2e9e7d) / Slate Gray (#64748b)
+   ============================================================ */
+
+/* Jade color tokens */
+:root {
+  --color-jade:        #2e9e7d;
+  --color-jade-dim:    #1a6b54;
+  --color-jade-glow:   rgba(46,158,125,0.12);
+  --color-jade-border: rgba(46,158,125,0.25);
+  --color-slate:       #64748b;
+  --color-slate-dim:   #475569;
+  --color-slate-text:  #94a3b8;
+  --color-slate-glow:  rgba(100,116,139,0.12);
+  --color-slate-border:rgba(100,116,139,0.25);
+}
+
+.daodoi-section {
+  position: relative;
+  padding: 6rem 1.5rem;
+  overflow: hidden;
+}
+
+.daodoi-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 40% at 20% 50%, rgba(46,158,125,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 50%, rgba(100,116,139,0.06) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.daodoi-section .section-header {
+  position: relative;
+  z-index: 1;
+}
+
+.text-jade  { color: var(--color-jade); }
+.text-slate { color: var(--color-slate-text); }
+.dao-amp    { color: rgba(255,255,255,0.25); margin: 0 0.25rem; }
+
+/* Column label row */
+.daodoi-col-labels {
+  display: flex;
+  justify-content: space-between;
+  max-width: 680px;
+  margin: 1.5rem auto 0;
+  font-size: 0.78rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+.label-doi    { color: var(--color-slate-text); }
+.label-center { color: rgba(255,255,255,0.2); }
+.label-dao    { color: var(--color-jade); }
+
+/* Pairs container */
+.pairs-container {
+  position: relative;
+  z-index: 1;
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+/* Each pair row: 2 cols + divider */
+.pair-row {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+}
+
+/* Columns */
+.pair-col {
+  flex: 1;
+  padding: 1.75rem 2rem;
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: box-shadow 0.3s var(--ease-soft), border-color 0.3s var(--ease-soft);
+  cursor: default;
+}
+
+.doi-col {
+  background: rgba(100,116,139,0.06);
+  border: 1px solid var(--color-slate-border);
+  border-radius: var(--radius-md) 0 0 var(--radius-md);
+}
+.doi-col.glow-active {
+  border-color: var(--color-slate-dim);
+  box-shadow: 0 0 32px rgba(100,116,139,0.15);
+}
+
+.dao-col {
+  background: var(--color-jade-glow);
+  border: 1px solid var(--color-jade-border);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+.dao-col.glow-active {
+  border-color: var(--color-jade);
+  box-shadow: 0 0 32px rgba(46,158,125,0.2);
+}
+
+/* Icon */
+.col-icon {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+/* Badge */
+.col-badge {
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  display: inline-block;
+  width: fit-content;
+}
+.doi-badge {
+  background: rgba(100,116,139,0.15);
+  color: var(--color-slate-text);
+  border: 1px solid var(--color-slate-border);
+}
+.dao-badge {
+  background: rgba(46,158,125,0.15);
+  color: var(--color-jade);
+  border: 1px solid var(--color-jade-border);
+}
+
+/* Content text */
+.col-content {
+  font-size: 0.95rem;
+  line-height: 1.9;
+  color: var(--color-text-secondary);
+  flex: 1;
+}
+
+/* Divider strip between columns */
+.pair-divider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  flex-shrink: 0;
+  gap: 6px;
+  padding: 1rem 0;
+  position: relative;
+}
+.divider-line {
+  width: 1px;
+  flex: 1;
+  background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.08), transparent);
+}
+.divider-symbol {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.15);
+  flex-shrink: 0;
+}
+
+/* Closing verse */
+.daodoi-closing-verse {
+  position: relative;
+  z-index: 1;
+  max-width: 640px;
+  margin: 5rem auto 0;
+  text-align: center;
+  padding: 2rem;
+  border: 1px solid var(--color-jade-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-jade-glow);
+}
+.daodoi-closing-verse p {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--color-jade);
+  line-height: 1.8;
+  margin-bottom: 0.75rem;
+}
+.daodoi-closing-verse footer {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.1em;
 }
