@@ -465,3 +465,386 @@
   color: var(--color-text-muted);
   letter-spacing: 0.1em;
 }
+
+/* ============================================================
+   MODULE 3: CÔNG ĐỨC & PHƯỚC BÁU NHÂN THIÊN
+   Palette: Terra (Đất nung) + Gold (Vàng đồng) + Ivory (Trắng ngà)
+   ============================================================ */
+
+:root {
+  --color-terra:        #c06838;
+  --color-terra-dim:    #8a4a28;
+  --color-terra-glow:   rgba(192,104,56,0.10);
+  --color-terra-border: rgba(192,104,56,0.28);
+  --color-ivory:        #f5ede0;
+  --color-ivory-dim:    rgba(245,237,224,0.75);
+}
+
+/* ── Section wrapper ── */
+.cdpb-section {
+  position: relative;
+  padding: 7rem 1.5rem 5rem;
+  overflow: hidden;
+}
+
+.cdpb-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 15% 30%, rgba(192,104,56,0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 85% 70%, rgba(201,168,76,0.05) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.cdpb-section-header {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 4rem;
+}
+
+.cdpb-module-eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-terra);
+  margin-bottom: 0.75rem;
+}
+
+.cdpb-terra { color: var(--color-terra); }
+.cdpb-and   { color: rgba(255,255,255,0.2); margin: 0 0.3rem; }
+
+/* ── Hero Quote ── */
+.cdpb-hero-section {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5rem;
+}
+
+.cdpb-hero-quote {
+  max-width: 680px;
+  text-align: center;
+  padding: 3rem 2.5rem;
+  background: linear-gradient(135deg,
+    rgba(192,104,56,0.08) 0%,
+    rgba(201,168,76,0.06) 50%,
+    rgba(192,104,56,0.08) 100%
+  );
+  border: 1px solid var(--color-terra-border);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 0 60px rgba(192,104,56,0.08), inset 0 1px 0 rgba(255,255,255,0.04);
+}
+
+.cdpb-hero-ornament {
+  font-size: 2rem;
+  color: var(--color-terra);
+  display: block;
+  margin-bottom: 1.25rem;
+  opacity: 0.6;
+}
+
+.cdpb-hero-quote-text {
+  font-family: var(--font-serif);
+  font-size: clamp(1.4rem, 3.5vw, 2rem);
+  font-style: italic;
+  line-height: 1.55;
+  color: var(--color-gold-bright);
+  margin-bottom: 1rem;
+  text-shadow: 0 0 30px rgba(232,201,126,0.2);
+}
+
+.cdpb-hero-quote-sub {
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  color: var(--color-terra);
+  text-transform: uppercase;
+}
+
+/* ── Chapters wrapper ── */
+.cdpb-chapters-wrapper {
+  position: relative;
+  z-index: 1;
+  max-width: 760px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.cdpb-chapter {
+  padding: 3.5rem 0;
+}
+
+.cdpb-chapter-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-terra-border), transparent);
+}
+
+/* ── Chapter heading ── */
+.cdpb-chapter-head {
+  margin-bottom: 2rem;
+}
+
+.cdpb-eyebrow {
+  font-size: 0.72rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--color-terra);
+  margin-bottom: 0.6rem;
+}
+
+.cdpb-chapter-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  color: var(--color-ivory);
+  margin-bottom: 0.75rem;
+  line-height: 1.35;
+}
+
+.cdpb-chapter-rule {
+  width: 48px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-terra), transparent);
+  border-radius: 1px;
+}
+
+/* ── Prose block ── */
+.cdpb-prose-block {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.cdpb-prose-block p {
+  font-size: 1rem;
+  line-height: 1.95;
+  color: var(--color-text-secondary);
+}
+
+/* ── Diagram (Chapter 2) ── */
+.cdpb-diagram {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 2.5rem;
+}
+
+.cdpb-diagram-card {
+  width: 100%;
+  max-width: 520px;
+  padding: 1.5rem 2rem;
+  background: var(--color-terra-glow);
+  border: 1px solid var(--color-terra-border);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.cdpb-diagram-icon {
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.cdpb-diagram-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-terra);
+  font-weight: 600;
+}
+
+.cdpb-diagram-text {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--color-text-secondary);
+}
+
+.cdpb-diagram-arrow {
+  font-size: 1.5rem;
+  color: var(--color-terra-border);
+  padding: 0.5rem 0;
+}
+
+/* ── Quote highlight ── */
+.cdpb-quote-highlight {
+  margin: 0;
+  padding: 1.25rem 1.75rem;
+  background: rgba(201,168,76,0.06);
+  border-left: 3px solid var(--color-gold);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+.cdpb-quote-highlight blockquote {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--color-gold-bright);
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+}
+
+.cdpb-quote-highlight figcaption {
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  color: var(--color-gold);
+  text-transform: uppercase;
+}
+
+/* ── Steps (Chapter 3) ── */
+.cdpb-steps {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.cdpb-step-item {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  padding: 1.5rem;
+  background: var(--color-abyss);
+  border: 1px solid rgba(201,168,76,0.1);
+  border-radius: var(--radius-md);
+  transition: border-color var(--duration-sm) var(--ease-soft),
+              box-shadow var(--duration-md) var(--ease-soft);
+}
+
+.cdpb-step-item:hover {
+  border-color: var(--color-terra-border);
+  box-shadow: 0 4px 24px rgba(192,104,56,0.08);
+}
+
+.cdpb-step-num {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-terra-border);
+  line-height: 1;
+  flex-shrink: 0;
+  min-width: 2.5rem;
+}
+
+.cdpb-step-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.cdpb-step-icon {
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+.cdpb-step-title {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  color: var(--color-ivory);
+  margin-top: 0.1rem;
+}
+
+.cdpb-step-text {
+  font-size: 0.92rem;
+  line-height: 1.85;
+  color: var(--color-text-secondary);
+}
+
+/* ── Warnings (Chapter 4) ── */
+.cdpb-warnings {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.cdpb-warning-card {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid rgba(192,104,56,0.2);
+  background: rgba(192,104,56,0.05);
+  border-radius: var(--radius-md);
+}
+
+.cdpb-warning-icon {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+
+.cdpb-warning-title {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  color: var(--color-terra);
+  margin-bottom: 0.3rem;
+}
+
+.cdpb-warning-text {
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: var(--color-text-secondary);
+}
+
+/* ── Closing verse ── */
+.cdpb-closing {
+  position: relative;
+  z-index: 1;
+  max-width: 680px;
+  margin: 5rem auto 0;
+  text-align: center;
+  padding: 2.5rem 2rem;
+  border: 1px solid var(--color-gold-dim);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg,
+    rgba(201,168,76,0.06) 0%,
+    rgba(192,104,56,0.04) 100%
+  );
+}
+
+.cdpb-closing-ornament {
+  display: block;
+  font-size: 2rem;
+  color: var(--color-gold);
+  opacity: 0.5;
+  margin-bottom: 1.25rem;
+}
+
+.cdpb-closing-text {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  color: var(--color-ivory-dim);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+.cdpb-closing-sub {
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: 1.25rem;
+}
+
+.cdpb-closing-expand {
+  font-size: 0.88rem;
+  line-height: 1.8;
+  color: var(--color-text-muted);
+  font-style: italic;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  .cdpb-hero-quote { padding: 2rem 1.25rem; }
+  .cdpb-hero-quote-text { font-size: 1.25rem; }
+  .cdpb-step-item { flex-direction: column; gap: 0.75rem; }
+  .cdpb-step-num  { font-size: 1.5rem; }
+  .cdpb-warning-card { flex-direction: column; gap: 0.5rem; }
+  .cdpb-closing   { padding: 2rem 1.25rem; }
+}
