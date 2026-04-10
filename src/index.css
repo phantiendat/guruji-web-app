@@ -1160,3 +1160,432 @@
   .msla-closing       { padding: 2rem 1.25rem; }
 }
 
+/* ============================================================
+   MODULE V: THIỀN CỔ ĐẠI — DÒNG ÂM LƯU THƯỢNG ĐẾ
+   Palette: Deep Violet (#3d1f6b → #6a3f9e) + White Mist (#f8f5ff)
+   CSS Namespace: .tca-*
+   ============================================================ */
+
+/* ── Violet Color Tokens ── */
+:root {
+  --color-violet-deep:    #3d1f6b;
+  --color-violet-mid:     #5c2d9a;
+  --color-violet-rich:    #6a3f9e;
+  --color-violet-bright:  #9b6fd4;
+  --color-violet-glow:    rgba(106,63,158,0.14);
+  --color-violet-border:  rgba(106,63,158,0.30);
+  --color-violet-mist:    #f8f5ff;
+  --color-violet-text:    rgba(248,245,255,0.85);
+}
+
+/* ── Section wrapper ── */
+.tca-section {
+  position: relative;
+  padding: 7rem 1.5rem 5rem;
+  overflow: hidden;
+}
+
+.tca-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 25% 20%, rgba(61,31,107,0.22) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 75%, rgba(106,63,158,0.14) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.tca-section-header {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 4rem;
+}
+
+.tca-module-eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-violet-bright);
+  margin-bottom: 0.75rem;
+}
+
+.tca-violet-txt { color: var(--color-violet-bright); }
+.tca-amp        { color: rgba(255,255,255,0.2); margin: 0 0.3rem; }
+
+/* ── Hero Banner ── */
+.tca-hero-wrap {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5rem;
+}
+
+.tca-hero-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 80% at 50% 50%, rgba(106,63,158,0.18) 0%, transparent 70%);
+  pointer-events: none;
+  border-radius: var(--radius-lg);
+}
+
+.tca-hero-inner {
+  position: relative;
+  max-width: 780px;
+  text-align: center;
+  padding: 4rem 3rem;
+  background: linear-gradient(135deg,
+    rgba(61,31,107,0.18) 0%,
+    rgba(106,63,158,0.10) 50%,
+    rgba(61,31,107,0.18) 100%
+  );
+  border: 1px solid var(--color-violet-border);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 0 80px rgba(61,31,107,0.25), inset 0 1px 0 rgba(248,245,255,0.04);
+}
+
+.tca-hero-eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-violet-bright);
+  margin-bottom: 1.25rem;
+  display: block;
+}
+
+.tca-hero-question {
+  font-family: var(--font-serif);
+  font-size: clamp(1.6rem, 4.5vw, 2.8rem);
+  font-style: italic;
+  color: var(--color-violet-mist);
+  line-height: 1.35;
+  margin-bottom: 1.25rem;
+  text-shadow: 0 0 40px rgba(155,111,212,0.3);
+}
+
+.tca-hero-divider {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-violet-bright), transparent);
+  margin: 0 auto 1.25rem;
+  opacity: 0.6;
+}
+
+.tca-hero-sub {
+  font-size: 1rem;
+  color: var(--color-violet-text);
+  font-style: italic;
+  line-height: 1.7;
+}
+
+/* ── Chapters wrapper ── */
+.tca-chapters-wrapper {
+  position: relative;
+  z-index: 1;
+  max-width: 760px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.tca-chapter {
+  padding: 3.5rem 0;
+}
+
+.tca-chapter-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-violet-border), transparent);
+}
+
+/* ── Chapter heading ── */
+.tca-chapter-head {
+  margin-bottom: 2rem;
+}
+
+.tca-eyebrow {
+  font-size: 0.72rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--color-violet-bright);
+  margin-bottom: 0.6rem;
+}
+
+.tca-chapter-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  color: var(--color-violet-mist);
+  margin-bottom: 0.75rem;
+  line-height: 1.35;
+}
+
+.tca-chapter-rule {
+  width: 48px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-violet-rich), transparent);
+  border-radius: 1px;
+}
+
+/* ── Prose block ── */
+.tca-prose-block {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.tca-prose-block p {
+  font-size: 1rem;
+  line-height: 1.95;
+  color: var(--color-text-secondary);
+}
+
+/* ── Section II: Inline Quote ── */
+.tca-inline-quote {
+  margin: 0 0 1.75rem;
+  padding: 1.5rem 2rem;
+  background: rgba(61,31,107,0.18);
+  border-left: 3px solid var(--color-violet-rich);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+
+.tca-inline-quote blockquote {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--color-violet-mist);
+  line-height: 1.65;
+  margin-bottom: 0.6rem;
+}
+
+.tca-inline-quote figcaption {
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  color: var(--color-violet-bright);
+  text-transform: uppercase;
+}
+
+/* ── Section III: Energy Flow Diagram ── */
+.tca-diagram-desc {
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  font-style: italic;
+}
+
+.tca-energy-flow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.tca-energy-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 440px;
+}
+
+.tca-energy-card {
+  width: 100%;
+  padding: 1.4rem 2rem;
+  background: rgba(61,31,107,0.20);
+  border: 1px solid var(--color-violet-border);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  text-align: center;
+  animation: violetGlow 4s ease-in-out infinite alternate;
+  transition: border-color var(--duration-md) var(--ease-soft),
+              box-shadow var(--duration-md) var(--ease-soft);
+}
+
+.tca-energy-card:hover {
+  border-color: var(--color-violet-rich);
+  box-shadow: 0 0 32px rgba(106,63,158,0.25), 0 0 80px rgba(61,31,107,0.18);
+}
+
+@keyframes violetGlow {
+  from { box-shadow: 0 0 12px rgba(106,63,158,0.10); }
+  to   { box-shadow: 0 0 28px rgba(106,63,158,0.22), 0 0 60px rgba(61,31,107,0.12); }
+}
+
+.tca-energy-icon {
+  font-size: 1.8rem;
+  color: var(--color-violet-bright);
+  line-height: 1;
+}
+
+.tca-energy-label {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  color: var(--color-violet-mist);
+  font-weight: 600;
+}
+
+.tca-energy-sub {
+  font-size: 0.78rem;
+  color: var(--color-violet-text);
+  letter-spacing: 0.06em;
+}
+
+.tca-energy-arrow {
+  font-size: 1.6rem;
+  color: var(--color-violet-border);
+  padding: 0.5rem 0;
+  line-height: 1;
+}
+
+/* ── Section IV: Benefit Cards Grid ── */
+.tca-benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+.tca-benefit-card {
+  padding: 1.75rem;
+  background: rgba(61,31,107,0.14);
+  border: 1px solid var(--color-violet-border);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  transition: border-color var(--duration-md) var(--ease-soft),
+              box-shadow var(--duration-md) var(--ease-soft);
+}
+
+.tca-benefit-card:hover {
+  border-color: var(--color-violet-rich);
+  box-shadow: 0 4px 24px rgba(106,63,158,0.12);
+}
+
+.tca-benefit-icon {
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.tca-benefit-title {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  color: var(--color-violet-mist);
+  line-height: 1.3;
+}
+
+.tca-benefit-desc {
+  font-size: 0.9rem;
+  line-height: 1.85;
+  color: var(--color-text-secondary);
+}
+
+/* ── Section V: QnA Accordion ── */
+.tca-qna-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.tca-qna-card {
+  background: var(--color-abyss);
+  border: 1px solid var(--color-violet-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: border-color var(--duration-sm) var(--ease-soft);
+}
+
+.tca-qna-card:hover {
+  border-color: var(--color-violet-rich);
+}
+
+.tca-qna-question {
+  width: 100%;
+  background: transparent;
+  border: none;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1.4rem 1.75rem;
+  cursor: pointer;
+  text-align: left;
+  color: var(--color-violet-text);
+  font-size: 0.97rem;
+  line-height: 1.6;
+  transition: color var(--duration-sm) var(--ease-soft);
+}
+
+.tca-qna-question:hover { color: var(--color-violet-mist); }
+
+.tca-qna-icon {
+  color: var(--color-violet-bright);
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.tca-qna-answer {
+  padding: 0 1.75rem 1.4rem;
+  color: var(--color-text-secondary);
+  font-size: 0.92rem;
+  line-height: 1.85;
+  border-top: 1px solid var(--color-violet-border);
+}
+
+.tca-qna-answer p { padding-top: 1rem; }
+
+/* ── Closing Verse ── */
+.tca-closing {
+  position: relative;
+  z-index: 1;
+  max-width: 640px;
+  margin: 5rem auto 0;
+  text-align: center;
+  padding: 3rem 2.5rem;
+  border: 1px solid var(--color-violet-border);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg,
+    rgba(61,31,107,0.18) 0%,
+    rgba(106,63,158,0.10) 100%
+  );
+  box-shadow: 0 0 60px rgba(61,31,107,0.20);
+}
+
+.tca-closing-ornament {
+  font-size: 2.2rem;
+  display: block;
+  margin-bottom: 1.25rem;
+  opacity: 0.65;
+}
+
+.tca-closing-text {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  color: var(--color-violet-mist);
+  line-height: 1.85;
+  margin-bottom: 1rem;
+}
+
+.tca-closing-sub {
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-violet-bright);
+  opacity: 0.7;
+}
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  .tca-hero-inner      { padding: 2.5rem 1.25rem; }
+  .tca-hero-question   { font-size: 1.5rem; }
+  .tca-benefits-grid   { grid-template-columns: 1fr; }
+  .tca-energy-step     { max-width: 100%; }
+  .tca-closing         { padding: 2rem 1.25rem; }
+  .tca-benefit-card    { padding: 1.25rem; }
+  .tca-qna-question    { padding: 1.1rem 1.25rem; }
+  .tca-qna-answer      { padding: 0 1.25rem 1.1rem; }
+}
+

@@ -5,6 +5,7 @@ import ContentGrid from './components/ContentGrid'
 import DaoDoiSection from './components/DaoDoiSection'
 import CongDucSection from './components/CongDucSection'
 import MinhSuLaAiSection from './components/MinhSuLaAiSection'
+import ThienCoDaiSection from './components/ThienCoDaiSection'
 import Footer from './components/Footer'
 import FloatingNav from './components/FloatingNav'
 import data from './data/tri_hue.json'
@@ -45,6 +46,11 @@ export default function App() {
       {/* ── Module 4: Minh Sư Là Ai? ── */}
       <section id="minh-su">
         <MinhSuLaAiSection />
+      </section>
+
+      {/* ── Module 5: Thiền Cổ Đại — Dòng Âm Lưu Thượng Đế ── */}
+      <section id="thien-co-dai">
+        <ThienCoDaiSection />
       </section>
 
       <Footer />
