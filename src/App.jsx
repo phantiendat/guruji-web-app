@@ -6,6 +6,7 @@ import DaoDoiSection from './components/DaoDoiSection'
 import CongDucSection from './components/CongDucSection'
 import MinhSuLaAiSection from './components/MinhSuLaAiSection'
 import Footer from './components/Footer'
+import FloatingNav from './components/FloatingNav'
 import data from './data/tri_hue.json'
 
 export default function App() {
@@ -16,29 +17,40 @@ export default function App() {
       <Hero />
 
       {/* ── Module 1: Trí Huệ ── */}
-      <main id="noi-dung" className="main-container">
-        <div className="section-header">
-          <h2 className="section-title">
-            Tinh Hoa <span className="text-gradient-gold">Trí Huệ</span>
-          </h2>
-          <p className="section-desc">
-            Kho tàng lời dạy — được chắt lọc từ hàng trăm bài giảng của Minh Sư
-          </p>
-        </div>
-        <FilterBar active={filter} onChange={setFilter} />
-        <ContentGrid data={data} filter={filter} />
-      </main>
+      <section id="tinh-hoa">
+        <main className="main-container">
+          <div className="section-header">
+            <h2 className="section-title">
+              Tinh Hoa <span className="text-gradient-gold">Trí Huệ</span>
+            </h2>
+            <p className="section-desc">
+              Kho tàng lời dạy — được chắt lọc từ hàng trăm bài giảng của Minh Sư
+            </p>
+          </div>
+          <FilterBar active={filter} onChange={setFilter} />
+          <ContentGrid data={data} filter={filter} />
+        </main>
+      </section>
 
       {/* ── Module 2: Đạo & Đời ── */}
-      <DaoDoiSection />
+      <section id="dao-doi">
+        <DaoDoiSection />
+      </section>
 
       {/* ── Module 3: Công Đức & Phước Báu ── */}
-      <CongDucSection />
+      <section id="cong-duc">
+        <CongDucSection />
+      </section>
 
       {/* ── Module 4: Minh Sư Là Ai? ── */}
-      <MinhSuLaAiSection />
+      <section id="minh-su">
+        <MinhSuLaAiSection />
+      </section>
 
       <Footer />
+
+      {/* ── Floating Pill Nav ── */}
+      <FloatingNav />
     </>
   )
 }
