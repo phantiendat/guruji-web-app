@@ -2,10 +2,11 @@ import { useRef } from 'react'
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion'
 
 const NAV_ITEMS = [
-  { label: 'Trí Huệ',   href: '#tinh-hoa' },
-  { label: 'Đạo & Đời', href: '#dao-doi'  },
-  { label: 'Công Đức',  href: '#cong-duc' },
-  { label: 'Minh Sư',   href: '#minh-su'  },
+  { label: 'Trí Huệ',   href: '#tinh-hoa'    },
+  { label: 'Đạo & Đời', href: '#dao-doi'      },
+  { label: 'Công Đức',  href: '#cong-duc'     },
+  { label: 'Minh Sư',   href: '#minh-su'      },
+  { label: 'Thiền Định', href: '#thien-co-dai' },
 ]
 
 export default function FloatingNav() {
