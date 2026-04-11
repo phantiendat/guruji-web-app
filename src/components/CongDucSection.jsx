@@ -47,7 +47,7 @@ const CONG_DUC = {
 
 /* ── Phân đoạn 2: Phước Báu Nhân Thiên ── */
 const PHUOC_BAU = {
-  eyebrow: 'Phân Đoạn II · Hữu Lậu',
+  eyebrow: 'Phân Đoạn II · Nhân Thiên',
   title: 'Phước Báu Nhân Thiên',
   definition:
     'Phước báu nhân thiên là quả lành của thiện nghiệp trong cõi người và cõi trời — biểu hiện qua tài lộc, sức khỏe, gia đình thuận duyên, danh vọng thế gian. Nó là HỮU LẬU — có rò rỉ, có tiêu hao, và không thoát khỏi vòng SANH TỬ.',
