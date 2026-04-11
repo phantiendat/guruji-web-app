@@ -3,10 +3,11 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 /* ─── Danh sách modules ─────────────────────────────────────── */
 const MODULES = [
-  { label: 'Tinh Hoa Trí Huệ',         href: '#tinh-hoa' },
-  { label: 'Đạo & Đời',                 href: '#dao-doi'  },
-  { label: 'Công Đức & Phước Báu',      href: '#cong-duc' },
-  { label: 'Minh Sư Là Ai?',            href: '#minh-su'  },
+  { label: 'Tinh Hoa Trí Huệ',         href: '#tinh-hoa'    },
+  { label: 'Đạo & Đời',                 href: '#dao-doi'     },
+  { label: 'Công Đức & Phước Báu',      href: '#cong-duc'    },
+  { label: 'Minh Sư Là Ai?',            href: '#minh-su'     },
+  { label: 'Thiền Cổ Đại',              href: '#thien-co-dai'},
 ]
 
 /* ─── Framer Motion variants ─────────────────────────────────── */
