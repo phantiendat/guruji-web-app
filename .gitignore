@@ -1,5 +1,11 @@
-# Logs
-logs
+# ── Node / Build ──────────────────────────────────────────────
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# ── Logs ──────────────────────────────────────────────────────
+logs/
 *.log
 npm-debug.log*
 yarn-debug.log*
@@ -7,18 +13,33 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
-
-# Editor directories and files
+# ── Editor ────────────────────────────────────────────────────
 .vscode/*
 !.vscode/extensions.json
-.idea
+.idea/
 .DS_Store
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+
+# ── Dữ liệu nội bộ / AI tools (KHÔNG push lên git) ───────────
+directives/
+executions/
+tmp/
+tmp_chrome_profile/
+notebooklm_data_*.txt
+fetch_notebooklm.py
+.env
+.env.*
+!.env.example
+
+# ── Planning / Bootstrap docs (chỉ dùng nội bộ) ──────────────
+VIBE_BOOTSTRAP.md
+PROMPT_TEMPLATES.md
+implementation_plan.md
+.claude/
+
+# ── Chrome profile dump ───────────────────────────────────────
+*.pb
