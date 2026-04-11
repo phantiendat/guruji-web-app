@@ -62,7 +62,7 @@ export default function NavigationOverlay() {
   return (
     <>
       {/* ════════════════════════════════════════════════
-          PHẦN 1 — Zen Controller (floating pill bottom-center)
+          PHẦN 1 — Zen Controller (floating pill bottom-left — thumb zone)
           ════════════════════════════════════════════════ */}
       <AnimatePresence>
         {!isOpen && (
@@ -75,8 +75,7 @@ export default function NavigationOverlay() {
             style={{
               position: 'fixed',
               bottom: '2rem',
-              left: '50%',
-              transform: 'translateX(-50%)',
+              left: '1.5rem',
               zIndex: 40,
             }}
           >
@@ -170,14 +169,14 @@ export default function NavigationOverlay() {
               paddingBottom: '5rem',
             }}
           >
-            {/* Nút đóng — góc phải trên */}
+            {/* Nút đóng — góc trái dưới (thumb zone nhất quán với pill) */}
             <button
               onClick={close}
               aria-label="Đóng danh mục"
               style={{
                 position: 'absolute',
-                top: '1.75rem',
-                right: '1.75rem',
+                bottom: '2rem',
+                left: '1.5rem',
                 background: 'transparent',
                 border: '1px solid rgba(255,255,255,0.10)',
                 borderRadius: '9999px',
