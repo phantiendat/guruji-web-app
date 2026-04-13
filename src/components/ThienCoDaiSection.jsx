@@ -5,11 +5,11 @@ import { useRef, useState } from "react";
    ANIMATION VARIANTS
 ───────────────────────────────────────────── */
 const fadeUp = {
-  hidden: { opacity: 0, y: 36 },
+  hidden: { opacity: 0, y: 38 },
   visible: (i = 0) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.85, delay: i * 0.14, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.88, delay: i * 0.13, ease: [0.22, 1, 0.36, 1] },
   }),
 };
 
@@ -17,7 +17,7 @@ const fadeIn = {
   hidden: { opacity: 0 },
   visible: (i = 0) => ({
     opacity: 1,
-    transition: { duration: 1.1, delay: i * 0.12, ease: "easeOut" },
+    transition: { duration: 1.1, delay: i * 0.1, ease: "easeOut" },
   }),
 };
 
@@ -26,22 +26,42 @@ const fadeIn = {
 ───────────────────────────────────────────── */
 function SectionDivider() {
   return (
-    <div className="flex items-center justify-center gap-4 my-14 opacity-25">
-      <div className="h-px w-20 bg-amber-300" />
-      <div className="w-1.5 h-1.5 rounded-full bg-amber-300" />
-      <div className="h-px w-20 bg-amber-300" />
+    <div className="flex items-center justify-center gap-4 my-16 opacity-20">
+      <div className="h-px w-20 bg-violet-400" />
+      <div className="w-1.5 h-1.5 rounded-full bg-violet-400" />
+      <div className="h-px w-20 bg-violet-400" />
     </div>
   );
 }
 
-function SectionLabel({ children }) {
+function Overline({ children }) {
   return (
     <p
-      className="text-center text-amber-400/60 tracking-[0.28em] uppercase mb-3"
-      style={{ fontFamily: "var(--font-sans)", fontSize: "0.72rem" }}
+      className="text-center text-violet-400/55 tracking-[0.3em] uppercase mb-4"
+      style={{ fontFamily: "var(--font-sans)", fontSize: "0.7rem" }}
     >
       {children}
     </p>
+  );
+}
+
+function SectionHeading({ children }) {
+  return (
+    <motion.h2
+      variants={fadeUp}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-60px" }}
+      className="text-center text-white/88 mb-10"
+      style={{
+        fontFamily: "var(--font-serif)",
+        fontSize: "clamp(1.45rem, 3vw, 2rem)",
+        fontWeight: 300,
+        letterSpacing: "-0.01em",
+      }}
+    >
+      {children}
+    </motion.h2>
   );
 }
 
@@ -59,25 +79,24 @@ function PillarCard({ icon, title, content, delay }) {
       variants={fadeUp}
       initial="hidden"
       animate={inView ? "visible" : "hidden"}
-      className="group relative rounded-2xl p-7 transition-all duration-700
-                 hover:border-violet-400/30 hover:bg-white/8"
+      className="rounded-2xl p-7 transition-all duration-700 hover:bg-white/6"
       style={{
         background: "rgba(255,255,255,0.03)",
-        border: "1px solid rgba(255,255,255,0.08)",
+        border: "1px solid rgba(139,92,246,0.12)",
         backdropFilter: "blur(12px)",
         WebkitBackdropFilter: "blur(12px)",
       }}
     >
-      <div className="text-3xl mb-4 select-none">{icon}</div>
+      <div className="text-2xl mb-4 select-none opacity-80">{icon}</div>
       <h3
-        className="text-violet-200 mb-3 font-semibold tracking-wide"
-        style={{ fontFamily: "var(--font-serif)", fontSize: "1.05rem" }}
+        className="text-violet-200 mb-3 font-semibold leading-snug"
+        style={{ fontFamily: "var(--font-serif)", fontSize: "1.03rem" }}
       >
         {title}
       </h3>
       <p
-        className="text-white/65 leading-relaxed"
-        style={{ fontFamily: "var(--font-sans)", fontSize: "0.9rem" }}
+        className="text-white/60 leading-relaxed"
+        style={{ fontFamily: "var(--font-sans)", fontSize: "0.88rem" }}
       >
         {content}
       </p>
@@ -88,7 +107,7 @@ function PillarCard({ icon, title, content, delay }) {
 /* ─────────────────────────────────────────────
    STEP ITEM — Section III
 ───────────────────────────────────────────── */
-function StepItem({ number, title, desc, delay }) {
+function StepItem({ roman, title, desc, delay }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-50px" });
 
@@ -102,21 +121,21 @@ function StepItem({ number, title, desc, delay }) {
       className="flex gap-5 items-start"
     >
       <div
-        className="flex-shrink-0 w-10 h-10 rounded-full flex items-center
-                   justify-center text-amber-300 font-semibold text-sm"
-        style={{ border: "1px solid rgba(251,191,36,0.3)" }}
+        className="flex-shrink-0 w-11 h-11 rounded-full flex items-center justify-center
+                   text-violet-300 font-semibold text-xs tracking-wider"
+        style={{ border: "1px solid rgba(139,92,246,0.28)" }}
       >
-        {number}
+        {roman}
       </div>
-      <div>
+      <div className="pt-1">
         <h4
-          className="text-amber-100 font-semibold mb-1.5"
+          className="text-amber-100/90 font-semibold mb-2"
           style={{ fontFamily: "var(--font-serif)", fontSize: "1rem" }}
         >
           {title}
         </h4>
         <p
-          className="text-white/60 leading-relaxed"
+          className="text-white/58 leading-relaxed"
           style={{ fontFamily: "var(--font-sans)", fontSize: "0.875rem" }}
         >
           {desc}
@@ -127,7 +146,7 @@ function StepItem({ number, title, desc, delay }) {
 }
 
 /* ─────────────────────────────────────────────
-   Q&A ITEM — Section IV (Expandable)
+   Q&A ACCORDION — Section V
 ───────────────────────────────────────────── */
 function QAItem({ question, answer, delay }) {
   const [open, setOpen] = useState(false);
@@ -143,28 +162,28 @@ function QAItem({ question, answer, delay }) {
       animate={inView ? "visible" : "hidden"}
       className="rounded-2xl overflow-hidden"
       style={{
-        background: "rgba(255,255,255,0.035)",
-        border: "1px solid rgba(255,255,255,0.08)",
+        background: "rgba(255,255,255,0.03)",
+        border: "1px solid rgba(139,92,246,0.1)",
         backdropFilter: "blur(10px)",
         WebkitBackdropFilter: "blur(10px)",
       }}
     >
       <button
         onClick={() => setOpen((v) => !v)}
-        className="w-full flex items-center justify-between gap-4 px-7 py-5
-                   text-left transition-colors duration-300 hover:bg-white/5"
+        className="w-full flex items-start justify-between gap-4 px-7 py-6
+                   text-left transition-colors duration-300 hover:bg-white/4"
       >
         <span
-          className="text-white/85 font-medium leading-snug"
+          className="text-white/82 font-medium leading-snug"
           style={{ fontFamily: "var(--font-serif)", fontSize: "0.97rem" }}
         >
           {question}
         </span>
         <motion.span
           animate={{ rotate: open ? 45 : 0 }}
-          transition={{ duration: 0.3 }}
-          className="flex-shrink-0 w-6 h-6 rounded-full flex items-center
-                     justify-center text-amber-400/70 text-lg font-thin"
+          transition={{ duration: 0.28, ease: "easeInOut" }}
+          className="flex-shrink-0 mt-0.5 w-6 h-6 flex items-center justify-center
+                     text-violet-400/60 text-xl font-thin leading-none"
         >
           +
         </motion.span>
@@ -173,22 +192,20 @@ function QAItem({ question, answer, delay }) {
       <AnimatePresence initial={false}>
         {open && (
           <motion.div
-            key="qa-body"
+            key="body"
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.38, ease: [0.22, 1, 0.36, 1] }}
             style={{ overflow: "hidden" }}
           >
             <div
-              className="px-7 pb-7 pt-2"
-              style={{
-                borderTop: "1px solid rgba(255,255,255,0.06)",
-              }}
+              className="px-7 pb-7 pt-3"
+              style={{ borderTop: "1px solid rgba(139,92,246,0.1)" }}
             >
               <p
-                className="text-white/60 leading-relaxed"
-                style={{ fontFamily: "var(--font-sans)", fontSize: "0.9rem" }}
+                className="text-white/55 leading-loose whitespace-pre-line"
+                style={{ fontFamily: "var(--font-sans)", fontSize: "0.88rem" }}
               >
                 {answer}
               </p>
@@ -201,70 +218,76 @@ function QAItem({ question, answer, delay }) {
 }
 
 /* ─────────────────────────────────────────────
-   VERSE BLOCK — Section V
+   BÀI KỆ BLOCK — Section VI
 ───────────────────────────────────────────── */
-function KePage({ lines, delay }) {
+function BaiKe({ title, lines }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
 
   return (
     <motion.div
       ref={ref}
-      custom={delay}
       variants={fadeIn}
       initial="hidden"
       animate={inView ? "visible" : "hidden"}
-      className="rounded-3xl p-10 text-center relative overflow-hidden"
+      className="rounded-3xl py-12 px-8 md:px-14 relative overflow-hidden text-center"
       style={{
         background:
-          "linear-gradient(135deg, rgba(61,31,107,0.25) 0%, rgba(10,10,26,0.4) 100%)",
-        border: "1px solid rgba(139,92,246,0.18)",
-        backdropFilter: "blur(16px)",
-        WebkitBackdropFilter: "blur(16px)",
+          "linear-gradient(160deg, rgba(61,31,107,0.22) 0%, rgba(10,10,26,0.45) 100%)",
+        border: "1px solid rgba(139,92,246,0.15)",
+        backdropFilter: "blur(18px)",
+        WebkitBackdropFilter: "blur(18px)",
       }}
     >
-      {/* Subtle glow orb */}
+      {/* glow top */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse 60% 40% at 50% 0%, rgba(139,92,246,0.12) 0%, transparent 70%)",
+            "radial-gradient(ellipse 70% 35% at 50% 0%, rgba(139,92,246,0.11) 0%, transparent 70%)",
         }}
       />
 
       <div className="relative z-10">
         <p
-          className="text-amber-400/40 tracking-[0.3em] uppercase text-xs mb-8"
-          style={{ fontFamily: "var(--font-sans)" }}
+          className="text-violet-400/40 tracking-[0.3em] uppercase mb-8"
+          style={{ fontFamily: "var(--font-sans)", fontSize: "0.7rem" }}
         >
-          Bài Kệ · Minh Sư Ruma
+          {title}
         </p>
 
-        <div className="space-y-3">
-          {lines.map((line, i) => (
-            <motion.p
-              key={i}
-              custom={i * 0.5}
-              variants={fadeIn}
-              initial="hidden"
-              animate={inView ? "visible" : "hidden"}
-              className="text-white/55 italic leading-relaxed"
-              style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(0.9rem, 2vw, 1rem)" }}
-            >
-              {line}
-            </motion.p>
-          ))}
+        <div className="space-y-2 max-w-2xl mx-auto">
+          {lines.map((line, i) =>
+            line === "" ? (
+              <div key={i} className="h-3" />
+            ) : (
+              <motion.p
+                key={i}
+                custom={i * 0.4}
+                variants={fadeIn}
+                initial="hidden"
+                animate={inView ? "visible" : "hidden"}
+                className="text-white/50 italic leading-relaxed"
+                style={{
+                  fontFamily: "var(--font-serif)",
+                  fontSize: "clamp(0.88rem, 1.8vw, 0.98rem)",
+                }}
+              >
+                {line}
+              </motion.p>
+            )
+          )}
         </div>
 
         <div
-          className="mt-8 h-px mx-auto w-16 opacity-20"
-          style={{ background: "rgba(251,191,36,1)" }}
+          className="mt-10 h-px w-12 mx-auto opacity-20"
+          style={{ background: "rgba(139,92,246,1)" }}
         />
         <p
-          className="mt-4 text-amber-400/40 text-xs tracking-widest"
+          className="mt-4 text-violet-400/35 text-xs tracking-widest"
           style={{ fontFamily: "var(--font-sans)" }}
         >
-          — Cốt Lõi Bình An —
+          — Minh Sư Guruji Ruma —
         </p>
       </div>
     </motion.div>
@@ -278,97 +301,106 @@ export default function ThienCoDaiSection() {
   const heroRef = useRef(null);
   const heroInView = useInView(heroRef, { once: true });
 
-  /* ── DATA ── */
+  /* ══ DATA (template literals — no escape issues) ══ */
 
   const pillars = [
     {
-      icon: "✦",
-      title: "Không Phải Tôn Giáo — Kỹ Thuật Đánh Thức",
-      content:
-        "Pháp môn Diệu Âm không phải giáo điều hay tín ngưỡng, mà là kỹ thuật đánh thức vị Minh sư bên trong thông qua sự rung động của Suối nguồn Âm thanh và hào quang Ánh sáng trực tiếp từ Thượng đế — giúp linh hồn vượt thoát sự kìm hãm của luật nhân quả.",
-    },
-    {
       icon: "⚜️",
-      title: "Mạch Truyền Thừa Từ Thiên Đàng",
-      content:
-        "Pháp môn này không có nguồn gốc từ nhân gian mà từ Thiên đàng, Niết bàn. Từ Đức Phật Thích Ca Mâu Ni nơi dãy Hy Mã Lạp Sơn đến tổ Bồ Đề Đạt Ma tại Trung Hoa — tất cả đều dùng Dòng Âm lưu để cứu độ những linh hồn hữu duyên.",
+      title: "Mạch Truyền Thừa Vô Tiền Khoáng Hậu",
+      content: `Pháp môn này không có nguồn gốc từ trí năng con người mà bắt nguồn từ Thiên đàng và Niết bàn. Suốt hàng ngàn năm, các bậc Minh sư Toàn Giác đã âm thầm mang ánh sáng này xuống cõi Ta bà để dẫn dắt những linh hồn đủ duyên trở về nguồn cội vĩnh hằng.`,
     },
     {
       icon: "🔑",
-      title: "Sức Mạnh Của Tâm Ấn — Vô Ngôn",
-      content:
-        "Sự chuyển hóa bắt đầu bằng hành động Vô Ngôn. Minh sư dùng lực lượng để chọc lủng màn vô minh, mồi ngọn đuốc trí huệ đang tắt trong linh hồn học trò. Không có Minh sư tại thế cầm chìa khóa — hành giả mãi chỉ mò mẫm trong bóng tối phàm phu.",
+      title: "Sức Mạnh Của Tâm Ấn — Mồi Đuốc Trí Huệ",
+      content: `Sự chuyển hóa thực sự bắt đầu khi hành giả được Minh sư tại thế mồi đuốc Trí Huệ thông qua lễ truyền Tâm Ấn. Đây là hành động vô ngôn, dùng lực lượng thiêng liêng để chọc lủng màn vô minh dày đặc, đánh thức vị Chủ nhân đang ngủ say bên trong mỗi chúng sanh.`,
     },
     {
       icon: "🌊",
-      title: "Thần Thông Vô Ngã — Vượt Tam Giới",
-      content:
-        "Dòng Âm lưu như dòng nước Cam lồ, len lỏi vào từng ngóc ngách của tâm thức để gội rửa nghiệp chướng. Lực lượng hóa giải cao thượng nhất — giúp linh hồn thăng hoa vượt qua ba cõi (Tam giới) để trở về bản thể thuần khiết.",
+      title: "Dòng Âm Lưu — Suối Nguồn Cam Lộ",
+      content: `Khi thiền định, hành giả không dùng ngôn ngữ hay tư duy mà lắng nghe dòng Âm lưu Thượng đế. Lực lượng này như dòng nước trong lành len lỏi vào tâm thức, xua tan bóng tối phủ định, đốt cháy nghiệp lực và hồi phục lực lượng vạn năng vốn có của linh hồn.`,
+    },
+    {
+      icon: "✦",
+      title: "Từ Phủ Định Sang Khẳng Định",
+      content: `Pháp thiền giúp hành giả làm chủ bản thân, không còn bị cuốn theo những tạp niệm hay sự quyến rũ của thế giới vật chất. Từ đó, mỗi lời nói trở thành lời khẳng định phúc lạc, mỗi cử chỉ là biểu hiện của tình yêu thương vô ngã và lòng khiêm nhường sâu thẳm.`,
     },
   ];
 
   const steps = [
     {
-      number: "I",
-      title: "Trường Chay & Ngũ Giới",
-      desc: "Để giữ cho nhục thể tinh khiết, hành giả bắt buộc phải ăn chay trường và giữ gìn ngũ giới. Đây là hàng rào bảo vệ, giúp tâm trí tránh khỏi sự xáo trộn của nghiệp sát và sự cám dỗ trần tục.",
+      roman: "I",
+      title: "Trường Chay Tinh Khiết",
+      desc: `Là nền tảng để bảo tồn nhục thể thanh tịnh và trưởng dưỡng lòng từ bi. Ăn chay không phải là sự chịu khổ, mà là cách để linh hồn nhẹ nhàng hơn, dễ dàng câu thông với lực lượng thiêng liêng của vũ trụ.`,
     },
     {
-      number: "II",
-      title: "Tập Trung Mắt Trí Huệ",
-      desc: "Khi ngồi thiền, thả lỏng cơ thể tự nhiên và đặt sự tập trung vào điểm giữa hai chân mày — cửa ngõ duy nhất dẫn vào thế giới nội tại. Tuyệt đối không dùng nội công hay nỗ lực gượng ép, mà để mọi việc diễn ra theo ân điển của Minh sư.",
+      roman: "II",
+      title: "Tọa Thiền Mỗi Ngày",
+      desc: `Dành ít nhất 2.5 tiếng để quay vào bên trong, tập trung vào Mắt Trí Huệ — điểm giữa hai chân mày. Thiền định là món ăn tinh thần tối quan trọng để nuôi dưỡng sự sáng suốt, giúp hành giả đối mặt với nghịch cảnh bằng tâm thế bình thản và tự tại.`,
     },
     {
-      number: "III",
+      roman: "III",
       title: "Mặc Niệm Năm Hồng Danh",
-      desc: "Năm danh hiệu thiêng liêng được trao lúc truyền Tâm ấn chính là bảo bối. Hành giả cần mặc niệm thầm trong tâm suốt 24 giờ — dù đi, đứng, nằm hay ngồi. Lực lượng này tạo ra hào quang bảo vệ, khiến ma vương và nghiệp lực không dám đụng chạm.",
+      desc: `Năm danh hiệu thiêng liêng được Minh sư ban cho chính là bảo bối hộ thân 24/24 giờ. Dù đi, đứng, nằm hay ngồi, việc mặc niệm thầm trong tâm giúp tạo ra hào quang bảo vệ, đẩy lùi ma vương và các lực lượng phủ định xung quanh.`,
     },
     {
-      number: "IV",
-      title: "Sống Đời Khẳng Định",
-      desc: "Thiền định không chỉ là ngồi yên, mà là mang sự sáng suốt vào đời sống. Hành giả học cách mỉm cười, khiêm nhường và tha thứ. Khi nội tâm vắng lặng như mặt hồ, trí huệ sẽ tự tuôn chảy, giúp giải quyết mọi rắc rối đời thường một cách dứt khoát và thông suốt.",
+      roman: "IV",
+      title: "Sống Đời Phục Vụ & Khiêm Nhường",
+      desc: `Áp dụng thiền định vào mọi công việc hàng ngày — làm việc với sự tập trung cao độ cũng chính là thiền. Khi con người biết khiêm nhường, họ sẽ mở ra cánh cửa của Trí Huệ và đón nhận được muôn vàn ân điển từ Thượng đế.`,
     },
   ];
 
   const qaItems = [
     {
-      question:
-        "Thiền định có phải thuộc về một tôn giáo cụ thể? Đức Chúa và các vị thầy khác có thiền không?",
-      answer:
-        "\"Ngài là Minh sư, Ngài là bậc khai ngộ thì Ngài không dùng ngôn ngữ con người mà Ngài để giảng dạy đâu. Suốt đời của Ngài là Ngài thiền định. Ngài thiền định Ngài mới kết nối được với Thượng đế chứ. Ngôn ngữ con người đôi khi dùng những cái chữ được gọi là 'cầu nguyện'. Cầu nguyện chính là thiền định đó. Nếu cầu nguyện mà quý vị không tập trung, quý vị không có sự định lực thì lời cầu nguyện của quý vị cũng vô dụng mà thôi.\"\n— Minh sư Ruma",
+      question: `Ngày con được thọ Tâm Ấn là ngày được mở cánh cửa giác ngộ, hay là ngày được trả lại quả vị Phật? Nếu đã là Phật thì tại sao còn cần nỗ lực tu hành?`,
+      answer: `Minh sư khai thị: Quý vị là một vị Phật — nhưng Phật còn đang ngủ, Phật còn mê, Phật sống vô minh, Phật chưa nhận thức được. Quý vị cần một người đánh thức mình, cần Minh sư mài dũa mỗi ngày.
+
+Cũng giống như tượng Phật để đó ngàn năm — tượng đó đóng đầy rêu rong rồi. Tượng Phật cũng vẫn là tượng Phật, nhưng cũng phải mài dũa chứ. Quý vị bắt buộc phải tự rèn luyện mình, cần Minh sư chạm để mài dũa quý vị đời đời kiếp kiếp.`,
     },
     {
-      question: "Dòng Âm Lưu Thượng Đế là gì? Tôi có thể tự tiếp cận không?",
-      answer:
-        "Dòng Âm Lưu là chấn động lực của vũ trụ — là Âm thanh và Ánh sáng nội tại không giống bất kỳ điều gì con người diễn đạt bằng đầu óc phàm phu hay kinh điển chữ nghĩa. Đây là sự hiểu biết bằng Trí Huệ thâm sâu bên trong. Không thể tự tiếp cận nếu không có Minh sư tại thế truyền Tâm ấn — đó là lý do pháp môn này cần \"chìa khóa\" thiêng liêng.",
+      question: `Con thọ pháp từ cuối năm 2016, đến nay gần 10 năm mới có cơ hội gặp Guruchi. Vài năm gần đây con đã thấu ngộ ra rằng tất cả mọi thứ đều do mình, do chúng sanh — vậy ý nghĩa của sự tu hành với Minh sư tại thế là như thế nào?`,
+      answer: `Minh sư khai thị: Giống như đặt cho mình một hạt giống Bồ Đề — thì bây giờ mình phải nuôi dưỡng, mình phải chăm sóc cái hạt giống này để cho đơm hoa kết quả. Nếu mình không chăm sóc thì hạt giống Bồ Đề này sẽ mòn mỏi, sẽ hoại đi mà thôi.
+
+Do mình hết, chứ không phải do Minh sư đâu.`,
     },
     {
-      question: "Thiền định mang lại lợi ích gì trong cuộc sống hàng ngày?",
-      answer:
-        "\"Thiền định là món ăn tinh hoa của trí huệ... Cuộc sống trong thiền định mới là sự trường sinh bất lão. Hãy tự nhủ đời người nhân gian có ai sống được là bao, ráng thiền mãi nghe con cho đời lạc quan tự tánh.\"\n— Minh sư Ruma\n\nKhi nội tâm được nạp đầy bởi Dòng Âm Lưu, mọi lo âu, bệnh tật tâm lý, nghiệp chướng dần dần được tẩy rửa. Trí huệ tự tuôn chảy, cuộc sống trở nên thông suốt và an lạc thực sự.",
-    },
-    {
-      question: "Pháp thiền này và các pháp môn khác khác nhau ở điểm gì?",
-      answer:
-        "\"Pháp Môn âm thanh ánh sáng nội tại hay dòng âm lưu thượng đế là một pháp môn giúp chúng ta trực tiếp thấu ngộ bên trong mình thông qua lực lượng dòng âm Lưu Thượng đế còn gọi là một sự hiểu biết bằng Trí Huệ hay sự chứng ngộ.\"\n— Minh sư Ruma\n\nKhác với các pháp môn dựa trên tư duy phàm phu hay nghi lễ bên ngoài, pháp thiền Diệu Âm là sự chứng ngộ trực tiếp — không qua trung gian ngôn ngữ, không qua sách vở kinh điển, mà qua ánh sáng và âm thanh bên trong chính mình.",
+      question: `Khi thiền định pháp môn Dòng Âm Lưu Thượng Đế, chúng con có cần giữ nghiêm ngặt đúng 2.5 tiếng mỗi ngày không? Và chúng con có thể thiền ở bất cứ đâu trên thế gian này không?`,
+      answer: `Minh sư khai thị: Từ con cũng giống như tất cả thiền sinh khắp nơi trên thế giới — khi quý vị đã có đức tin mãnh liệt rồi, thì lực lượng dùng âm lưu Thượng đế, lực lượng gọi là Tâm Ấn này, lực lượng Trí Huệ của các con đều xuất hiện — sẽ đẩy lùi tất cả mọi sự chướng ngại trong cuộc sống.
+
+Từ từ con cứ thả lỏng mình đi.`,
     },
   ];
 
-  const keLines = [
+  const cotLoiBinhAnLines = [
+    "Ruma Tịnh tỏa ngày tim ngân nga",
+    "cho đời âm Lưu Thượng Đế",
+    "cho vô minh đọa lạc rời xa nhân thế",
+    "nguyện sao cho thiền sinh tinh tấn công phu",
+    "",
+    "Thiền sinh hãy Nhất Tâm Thiện Nhất Tâm Niệm",
+    "để lòng không lay chuyển",
+    "một lòng Quan Âm thiền tình",
+    "",
+    "Muốn phá tan nghiệp sâu gì",
+    "hãy ghi nhớ lời Minh sư dạy bảo các con mỗi ngày",
+    "",
+    "càng tham thiền nhập định",
+    "con sẽ ngộ trong thiền — sắc sắc không không",
+    "thấm nghĩa Kiếp vô thường",
+    "",
     "tham thiền nhập định giữa nhân gian",
-    "con sẽ Gành bến bờ Giải Thoát",
+    "con sẽ đến bến bờ Giải Thoát",
     "đi sâu thiền định âm Lưu Thượng đế",
     "sẽ phá tan U Minh tăm tối",
     "",
-    "ngồi thiền dưới tâm thanh tịnh",
-    "nhập sau cốt lõi bình an",
+    "ngồi thiền trong tâm thanh tịnh",
+    "nhập sâu cốt lõi bình an",
     "Quan Âm nhẹ nhàng con sẽ cảm nhận",
     "âm Lưu Thượng đế cứ đến hoài",
     "",
-    "đời người sống được là bao",
+    "Đời người sống được là bao",
     "hãy tham thiền nhập định",
     "cuộc sống trong thiền định",
-    "mới là sự trường sinh...",
+    "mới là sự trường sinh bất lão",
     "",
     "thiền mênh mang bồng bềnh",
     "âm Lưu Thượng đế Ruma...",
@@ -380,43 +412,43 @@ export default function ThienCoDaiSection() {
       id="phap-thien-co-dai"
       className="relative min-h-screen py-28 px-4 overflow-hidden"
       style={{
-        background: "linear-gradient(180deg, #070712 0%, #0d0d22 45%, #070712 100%)",
+        background:
+          "linear-gradient(180deg, #070712 0%, #0c0c20 50%, #070712 100%)",
       }}
     >
       {/* ── Background Orbs ── */}
       <div
-        className="absolute top-1/4 -left-40 w-[500px] h-[500px] rounded-full pointer-events-none"
+        className="absolute top-1/4 -left-48 w-[520px] h-[520px] rounded-full pointer-events-none"
         style={{
           background:
-            "radial-gradient(circle, rgba(109,40,217,0.10) 0%, transparent 70%)",
+            "radial-gradient(circle, rgba(109,40,217,0.09) 0%, transparent 70%)",
+          filter: "blur(90px)",
+        }}
+      />
+      <div
+        className="absolute bottom-1/3 -right-48 w-[400px] h-[400px] rounded-full pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(245,158,11,0.07) 0%, transparent 70%)",
           filter: "blur(80px)",
         }}
       />
       <div
-        className="absolute bottom-1/3 -right-40 w-96 h-96 rounded-full pointer-events-none"
+        className="absolute top-2/3 left-1/2 -translate-x-1/2 w-[700px] h-48 pointer-events-none"
         style={{
           background:
-            "radial-gradient(circle, rgba(245,158,11,0.09) 0%, transparent 70%)",
-          filter: "blur(70px)",
-        }}
-      />
-      <div
-        className="absolute top-3/4 left-1/2 -translate-x-1/2 w-[600px] h-48 pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(ellipse, rgba(109,40,217,0.07) 0%, transparent 70%)",
+            "radial-gradient(ellipse, rgba(139,92,246,0.06) 0%, transparent 70%)",
           filter: "blur(60px)",
         }}
       />
 
       <div className="max-w-4xl mx-auto relative z-10">
 
-        {/* ══════════════════════════════════════════
+        {/* ════════════════════════════════════════
             SECTION I — HERO
-        ══════════════════════════════════════════ */}
+        ════════════════════════════════════════ */}
         <motion.div
           ref={heroRef}
-          variants={fadeUp}
           initial="hidden"
           animate={heroInView ? "visible" : "hidden"}
           className="text-center mb-24"
@@ -426,8 +458,8 @@ export default function ThienCoDaiSection() {
             variants={fadeUp}
             initial="hidden"
             animate={heroInView ? "visible" : "hidden"}
-            className="text-amber-400/60 tracking-[0.32em] uppercase text-xs mb-6"
-            style={{ fontFamily: "var(--font-sans)" }}
+            className="text-violet-400/55 tracking-[0.32em] uppercase mb-5"
+            style={{ fontFamily: "var(--font-sans)", fontSize: "0.7rem" }}
           >
             Pháp Môn Của Linh Hồn
           </motion.p>
@@ -437,12 +469,12 @@ export default function ThienCoDaiSection() {
             variants={fadeUp}
             initial="hidden"
             animate={heroInView ? "visible" : "hidden"}
-            className="text-white mb-6 leading-tight"
+            className="text-white mb-5 leading-tight"
             style={{
               fontFamily: "var(--font-serif)",
               fontSize: "clamp(2rem, 5.5vw, 3.4rem)",
               fontWeight: 300,
-              letterSpacing: "-0.01em",
+              letterSpacing: "-0.015em",
             }}
           >
             Pháp Thiền Cổ Đại
@@ -450,13 +482,13 @@ export default function ThienCoDaiSection() {
             <span
               style={{
                 background:
-                  "linear-gradient(135deg, #c084fc 0%, #a855f7 40%, #7c3aed 100%)",
+                  "linear-gradient(135deg, #c084fc 0%, #a855f7 45%, #7c3aed 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
-                fontWeight: 500,
+                fontWeight: 450,
               }}
             >
-              Pháp Môn Diệu Âm
+              Thanh Âm Của Tạo Hóa · Ánh Sáng Của Linh Hồn
             </span>
           </motion.h1>
 
@@ -465,47 +497,33 @@ export default function ThienCoDaiSection() {
             variants={fadeUp}
             initial="hidden"
             animate={heroInView ? "visible" : "hidden"}
-            className="text-white/50 max-w-2xl mx-auto leading-relaxed"
-            style={{ fontFamily: "var(--font-sans)", fontSize: "1rem" }}
+            className="text-white/48 max-w-xl mx-auto leading-relaxed"
+            style={{ fontFamily: "var(--font-sans)", fontSize: "0.97rem" }}
           >
-            Âm Thanh và Ánh Sáng Nội Tại — một pháp môn cổ đại vốn tồn tại
-            từ khi càn khôn vũ trụ được tạo thành, giúp linh hồn trực tiếp
-            thấu ngộ bản thể thuần khiết của mình.
+            Con đường tâm linh cổ đại nhất — trực tiếp đưa linh hồn tiếp xúc
+            với Ánh sáng Trí Huệ tối thượng và Âm thanh Chấn động lực của Càn
+            khôn, vượt lên trên mọi hình thức tôn giáo hay giáo điều nhân gian.
           </motion.p>
 
-          {/* Decorative line */}
           <motion.div
             custom={3}
             variants={fadeIn}
             initial="hidden"
             animate={heroInView ? "visible" : "hidden"}
-            className="flex items-center justify-center gap-3 mt-10 opacity-30"
+            className="flex items-center justify-center gap-3 mt-10 opacity-25"
           >
-            <div className="h-px w-12 bg-violet-400" />
+            <div className="h-px w-14 bg-violet-400" />
             <div className="w-1 h-1 rounded-full bg-violet-400" />
-            <div className="h-px w-12 bg-violet-400" />
+            <div className="h-px w-14 bg-violet-400" />
           </motion.div>
         </motion.div>
 
-        {/* ══════════════════════════════════════════
-            SECTION II — 4 KHÁI NIỆM CỐT LÕI
-        ══════════════════════════════════════════ */}
+        {/* ════════════════════════════════════════
+            SECTION II — 4 PILLAR CARDS
+        ════════════════════════════════════════ */}
         <div className="mb-20">
-          <SectionLabel>Chiều Sâu Nhận Thức</SectionLabel>
-          <motion.h2
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-60px" }}
-            className="text-center text-white/88 mb-10"
-            style={{
-              fontFamily: "var(--font-serif)",
-              fontSize: "clamp(1.4rem, 3vw, 1.95rem)",
-              fontWeight: 300,
-            }}
-          >
-            Bốn Tầng Hiểu Biết Về Pháp Môn Diệu Âm
-          </motion.h2>
+          <Overline>Chiều Sâu Nhận Thức</Overline>
+          <SectionHeading>Bốn Tầng Hiểu Biết Về Pháp Môn Diệu Âm</SectionHeading>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {pillars.map((p, i) => (
@@ -514,34 +532,40 @@ export default function ThienCoDaiSection() {
           </div>
         </div>
 
-        {/* Quote Block — Minh sư */}
+        {/* Quote Block — Khai thị Minh sư #1 */}
         <motion.div
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}
-          className="mb-20 px-8 py-9 rounded-3xl relative overflow-hidden"
+          className="mb-20 relative rounded-3xl overflow-hidden px-10 py-10"
           style={{
-            background: "rgba(109,40,217,0.08)",
-            border: "1px solid rgba(139,92,246,0.16)",
-            backdropFilter: "blur(12px)",
-            WebkitBackdropFilter: "blur(12px)",
+            background: "rgba(109,40,217,0.07)",
+            border: "1px solid rgba(139,92,246,0.14)",
+            backdropFilter: "blur(14px)",
+            WebkitBackdropFilter: "blur(14px)",
           }}
         >
           <div
-            className="absolute top-0 left-0 w-1 h-full rounded-l-3xl"
-            style={{ background: "linear-gradient(180deg, #c084fc 0%, #7c3aed 100%)" }}
+            className="absolute left-0 top-0 w-[3px] h-full rounded-l-3xl"
+            style={{
+              background:
+                "linear-gradient(180deg, #c084fc 0%, #7c3aed 100%)",
+            }}
           />
           <p
-            className="text-white/75 leading-relaxed italic text-center"
-            style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(1rem, 2.5vw, 1.15rem)" }}
+            className="text-white/72 leading-loose italic"
+            style={{
+              fontFamily: "var(--font-serif)",
+              fontSize: "clamp(1rem, 2.2vw, 1.12rem)",
+            }}
           >
             "Minh sư là trí huệ bên trong của mình đó, ta là trí huệ bên trong
             của quý vị, là một ánh sáng soi đường dẫn lối cho quý vị đi về thế
             giới giải thoát bình an và phúc lạc này đây."
           </p>
           <p
-            className="text-center mt-5 text-violet-400/50 text-xs tracking-widest"
+            className="mt-5 text-violet-400/45 text-xs tracking-[0.22em] uppercase"
             style={{ fontFamily: "var(--font-sans)" }}
           >
             — Minh Sư Ruma · Khai Thị —
@@ -550,102 +574,63 @@ export default function ThienCoDaiSection() {
 
         <SectionDivider />
 
-        {/* ══════════════════════════════════════════
-            SECTION III — HƯỚNG DẪN THỰC HÀNH
-        ══════════════════════════════════════════ */}
+        {/* ════════════════════════════════════════
+            SECTION III — 4 BƯỚC THỰC HÀNH
+        ════════════════════════════════════════ */}
         <div className="mb-20">
-          <SectionLabel>Con Đường Thực Hành</SectionLabel>
-          <motion.h2
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-60px" }}
-            className="text-center text-white/88 mb-12"
-            style={{
-              fontFamily: "var(--font-serif)",
-              fontSize: "clamp(1.4rem, 3vw, 1.95rem)",
-              fontWeight: 300,
-            }}
-          >
-            Bốn Nền Tảng Của Hành Giả
-          </motion.h2>
+          <Overline>Con Đường Thực Hành</Overline>
+          <SectionHeading>Bốn Nền Tảng Của Hành Giả</SectionHeading>
 
-          <div className="space-y-9">
+          <div className="space-y-10">
             {steps.map((s, i) => (
               <StepItem key={i} {...s} delay={i} />
             ))}
           </div>
         </div>
 
-        {/* Pháp Thoại Trích Dẫn */}
+        {/* Pháp Thoại Block */}
         <motion.div
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}
-          className="mb-20 rounded-3xl p-8 relative overflow-hidden"
+          className="mb-20 rounded-3xl p-8"
           style={{
             background: "rgba(255,255,255,0.025)",
-            border: "1px solid rgba(255,255,255,0.07)",
+            border: "1px solid rgba(255,255,255,0.06)",
             backdropFilter: "blur(10px)",
             WebkitBackdropFilter: "blur(10px)",
           }}
         >
           <p
-            className="text-amber-400/50 tracking-[0.25em] uppercase text-xs mb-5"
-            style={{ fontFamily: "var(--font-sans)" }}
+            className="text-violet-400/45 tracking-[0.25em] uppercase mb-5"
+            style={{ fontFamily: "var(--font-sans)", fontSize: "0.7rem" }}
           >
-            Pháp Thoại · Minh Sư Ruma
+            Pháp Thoại · Gốc Rễ Của Sự Nhận Thức
           </p>
           <p
-            className="text-white/60 leading-loose"
-            style={{ fontFamily: "var(--font-sans)", fontSize: "0.9rem" }}
+            className="text-white/55 leading-loose"
+            style={{ fontFamily: "var(--font-sans)", fontSize: "0.88rem" }}
           >
-            "Pháp Môn âm thanh ánh sáng nội tại hay dòng âm lưu thượng đế là
+            "Pháp Môn thiền định âm thanh và ánh sáng nội tại — một Pháp môn
+            cổ đại mà Đức Phật Thích Ca Mâu Ni đã tìm ra nơi dãy Hy Mã Lạp
+            Sơn, từ triều đại của Ngài đến nay được xem như đã hơn 2600 năm.
+            Pháp môn âm thanh ánh sáng nội tại hay dòng âm lưu Thượng đế là
             một pháp môn giúp chúng ta trực tiếp thấu ngộ bên trong mình thông
-            qua lực lượng dòng âm Lưu Thượng đế còn gọi là một sự hiểu biết
-            bằng Trí Huệ hay sự chứng ngộ. Pháp Môn này là một lực lượng âm
-            lưu giúp tẩy rựa nghiệp chướng dẫn dắt chúng ta đi về thế giới
-            giải thoát. Âm thanh ánh sáng nội tại này không giống như những gì
-            con người chúng ta thường diễn đạt để hiểu biết một cách đơn
-            thuần bằng đầu óc con người với những gì ghi trong sách vở kinh
-            điển — mà nó là sự hiểu biết bằng Trí Huệ thâm sâu bên trong để
-            chúng ta nhận thức được rằng đó là một lực lượng tẩy rửa linh hồn
-            mọi chúng sanh."
+            qua lực lượng dòng âm Lưu Thượng đế — còn gọi là sự hiểu biết bằng
+            Trí Huệ hay sự chứng ngộ. Pháp Môn này là một lực lượng âm lưu giúp
+            tẩy rửa nghiệp chướng, dẫn dắt chúng ta đi về thế giới giải thoát."
           </p>
         </motion.div>
 
         <SectionDivider />
 
-        {/* ══════════════════════════════════════════
+        {/* ════════════════════════════════════════
             SECTION IV — Q&A KHAI THỊ
-        ══════════════════════════════════════════ */}
+        ════════════════════════════════════════ */}
         <div className="mb-20">
-          <SectionLabel>Vấn Đáp Khai Thị</SectionLabel>
-          <motion.h2
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-60px" }}
-            className="text-center text-white/88 mb-3"
-            style={{
-              fontFamily: "var(--font-serif)",
-              fontSize: "clamp(1.4rem, 3vw, 1.95rem)",
-              fontWeight: 300,
-            }}
-          >
-            Những Câu Hỏi Thường Gặp
-          </motion.h2>
-          <motion.p
-            variants={fadeIn}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="text-center text-white/38 mb-10"
-            style={{ fontFamily: "var(--font-sans)", fontSize: "0.87rem" }}
-          >
-            Lời khai thị trực tiếp từ Minh sư Ruma
-          </motion.p>
+          <Overline>Vấn Đáp Khai Thị</Overline>
+          <SectionHeading>Lời Minh Sư Ruma Giải Đáp</SectionHeading>
 
           <div className="space-y-3">
             {qaItems.map((item, i) => (
@@ -656,44 +641,31 @@ export default function ThienCoDaiSection() {
 
         <SectionDivider />
 
-        {/* ══════════════════════════════════════════
-            SECTION V — BÀI KỆ "CỐT LÕI BÌNH AN"
-        ══════════════════════════════════════════ */}
+        {/* ════════════════════════════════════════
+            SECTION V — BÀI KỆ CỐT LÕI BÌNH AN
+        ════════════════════════════════════════ */}
         <div className="mb-20">
-          <SectionLabel>Thi Kệ</SectionLabel>
-          <motion.h2
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-60px" }}
-            className="text-center text-white/88 mb-10"
-            style={{
-              fontFamily: "var(--font-serif)",
-              fontSize: "clamp(1.4rem, 3vw, 1.95rem)",
-              fontWeight: 300,
-            }}
-          >
-            Cốt Lõi Bình An
-          </motion.h2>
-          <KePage lines={keLines} delay={0} />
+          <Overline>Thi Kệ</Overline>
+          <SectionHeading>Cốt Lõi Bình An</SectionHeading>
+          <BaiKe title="Bài Kệ · Minh Sư Ruma" lines={cotLoiBinhAnLines} />
         </div>
 
-        {/* ══════════════════════════════════════════
-            SECTION VI — CLOSING VERSE
-        ══════════════════════════════════════════ */}
+        {/* ════════════════════════════════════════
+            CLOSING QUOTE
+        ════════════════════════════════════════ */}
         <motion.div
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}
-          className="text-center mt-16 pb-4"
+          className="text-center py-8"
         >
-          <div className="inline-block max-w-xl mx-auto">
+          <div className="max-w-lg mx-auto">
             <p
-              className="text-white/35 italic leading-loose"
+              className="text-white/32 italic leading-loose"
               style={{
                 fontFamily: "var(--font-serif)",
-                fontSize: "clamp(0.95rem, 2vw, 1.05rem)",
+                fontSize: "clamp(0.92rem, 2vw, 1.02rem)",
               }}
             >
               "Thiền định là món ăn tinh hoa của trí huệ.
@@ -705,10 +677,10 @@ export default function ThienCoDaiSection() {
               ráng thiền mãi nghe con cho đời lạc quan tự tánh."
             </p>
             <p
-              className="mt-6 text-amber-400/40 text-xs tracking-[0.25em] uppercase"
+              className="mt-6 text-violet-400/35 text-xs tracking-[0.22em] uppercase"
               style={{ fontFamily: "var(--font-sans)" }}
             >
-              — Tinh hoa Trí Huệ · Guruji Ruma —
+              — Tinh Hoa Trí Huệ · Guruji Ruma —
             </p>
           </div>
         </motion.div>
